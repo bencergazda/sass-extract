@@ -1,4 +1,4 @@
-@import './include/functions.scss';
+@import "./include/functions.scss";
 
 $foo: func1();
 
@@ -15,6 +15,4 @@ $foo: func-multiple-default-1();
 $foo: func-multiple-default-2();
 
 $someOtherDefault: 3;
-$someDefault: 'b' !default;
-
-
+$someDefault: "b" !default;
