@@ -7,10 +7,10 @@ $number2: $number1 * 2;
 $color: get-color();
 $list: 1px solid black;
 $listComma: tahoma, arial;
-$string: 'string';
+$string: "string";
 $boolean: true;
 $null: null;
 $map: (
   number: 2em,
-  string: 'mapstring'
+  string: "mapstring",
 );

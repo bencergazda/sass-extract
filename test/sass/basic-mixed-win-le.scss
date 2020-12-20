@@ -6,16 +6,15 @@
 }
 
 @function test($attr1, $attr2, $attr3: null, $attr4: null, $attr5: null) {
-  @return 'hello';
+  @return "hello";
 }
-
 
 $list: 1px solid black;
 $listComma: tahoma, arial;
-$string: 'string';
+$string: "string";
 $map: (
   number: 2em,
-  string: 'mapstring'
+  string: "mapstring",
 );
 
 div {
