@@ -1,6 +1,5 @@
 import path from "path"
 import { renderFunctions } from "./helpers/testSets"
-import { normalizePath } from "../src/util"
 
 const sourceFile = path.join(__dirname, "scss", "comments.scss")
 
@@ -32,10 +31,12 @@ describe("comments", () => {
       expect(rendered.vars.global.$number1).toMatchSassNumber(sourceFile, {
         value: 100,
         unit: "px",
-        declarations: expect.toMatchDeclarations([{
-          expression: "100px",
-          sourceFile,
-        }]),
+        declarations: expect.toMatchDeclarations([
+          {
+            expression: "100px",
+            sourceFile,
+          },
+        ]),
       })
     })
 
@@ -43,10 +44,12 @@ describe("comments", () => {
       expect(rendered.vars.global.$number2).toMatchSassNumber(sourceFile, {
         value: 200,
         unit: "px",
-        declarations: expect.toMatchDeclarations([{
-          expression: "$number1 * 2",
-          sourceFile,
-        }]),
+        declarations: expect.toMatchDeclarations([
+          {
+            expression: "$number1 * 2",
+            sourceFile,
+          },
+        ]),
       })
     })
 
@@ -59,10 +62,12 @@ describe("comments", () => {
           a: 1,
           hex: "#ff0000",
         },
-        declarations: expect.toMatchDeclarations([{
-          expression: "red",
-          sourceFile,
-        }]),
+        declarations: expect.toMatchDeclarations([
+          {
+            expression: "red",
+            sourceFile,
+          },
+        ]),
       })
     })
   })

@@ -1,6 +1,6 @@
-import { render, renderSync } from '../../src';
+import { render, renderSync } from "../../src"
 
 export const renderFunctions = [
-  ['sync', renderSync],
-  ['async', render],
+  ["sync", renderSync],
+  ["async", render],
 ]

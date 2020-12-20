@@ -1,6 +1,5 @@
 import path from "path"
 import { renderFunctions } from "./helpers/testSets"
-import { normalizePath } from "../src/util"
 import { types } from "node-sass"
 
 const functionsFile = path.join(__dirname, "scss", "functions.scss")
@@ -25,18 +24,22 @@ describe("functions", () => {
                 a: 1,
                 hex: "#00ff00",
               },
-              declarations: expect.toMatchDeclarations([{
-                expression: "fn-color()",
-                sourceFile: functionsFile,
-              }]),
+              declarations: expect.toMatchDeclarations([
+                {
+                  expression: "fn-color()",
+                  sourceFile: functionsFile,
+                },
+              ]),
             }),
             $fSize: expect.toMatchSassNumber(functionsFile, {
               value: 20,
               unit: "px",
-              declarations: expect.toMatchDeclarations([{
-                expression: "fn-size(2)",
-                sourceFile: functionsFile,
-              }]),
+              declarations: expect.toMatchDeclarations([
+                {
+                  expression: "fn-size(2)",
+                  sourceFile: functionsFile,
+                },
+              ]),
             }),
           },
         },

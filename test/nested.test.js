@@ -1,6 +1,5 @@
 import path from "path"
 import { renderFunctions } from "./helpers/testSets"
-import { normalizePath } from "../src/util"
 
 const nestedBasicFile = path.join(__dirname, "scss", "nested", "nested-basic.scss")
 const nestedSubFile = path.join(__dirname, "scss", "nested", "sub", "sub.scss")
@@ -18,13 +17,15 @@ describe("nested", () => {
       })
 
       it("should extract $a", () => {
-        expect(rendered.vars.global.$a).toMatchSassNumber(nestedBasicFile,{
+        expect(rendered.vars.global.$a).toMatchSassNumber(nestedBasicFile, {
           value: 100,
           unit: "px",
-          declarations: expect.toMatchDeclarations([{
-            expression: "100px",
-            sourceFile: nestedBasicFile,
-          }]),
+          declarations: expect.toMatchDeclarations([
+            {
+              expression: "100px",
+              sourceFile: nestedBasicFile,
+            },
+          ]),
         })
       })
 
@@ -32,10 +33,12 @@ describe("nested", () => {
         expect(rendered.vars.global.$b).toMatchSassNumber(nestedSubFile, {
           value: 200,
           unit: "px",
-          declarations: expect.toMatchDeclarations([{
-            expression: "200px",
-            sourceFile: nestedSubFile,
-          }]),
+          declarations: expect.toMatchDeclarations([
+            {
+              expression: "200px",
+              sourceFile: nestedSubFile,
+            },
+          ]),
         })
       })
 
@@ -43,10 +46,12 @@ describe("nested", () => {
         expect(rendered.vars.global.$c).toMatchSassNumber(nestedSub2File, {
           value: 300,
           unit: "px",
-          declarations: expect.toMatchDeclarations([{
-            expression: "300px",
-            sourceFile: nestedSub2File,
-          }]),
+          declarations: expect.toMatchDeclarations([
+            {
+              expression: "300px",
+              sourceFile: nestedSub2File,
+            },
+          ]),
         })
       })
     })
@@ -59,27 +64,35 @@ describe("nested", () => {
       })
 
       it("should extract $a", () => {
-        expect(rendered.vars.global.$a).toMatchSassNumber([nestedOverridesSubFile, nestedOverridesFile], {
-          value: 200,
-          unit: "px",
-          declarations: expect.toMatchDeclarations([{
-            expression: "200px",
-            sourceFile: nestedOverridesSubFile,
-          }, {
-            expression: "100px",
-            sourceFile: nestedOverridesFile,
-          }]),
-        })
+        expect(rendered.vars.global.$a).toMatchSassNumber(
+          [nestedOverridesSubFile, nestedOverridesFile],
+          {
+            value: 200,
+            unit: "px",
+            declarations: expect.toMatchDeclarations([
+              {
+                expression: "200px",
+                sourceFile: nestedOverridesSubFile,
+              },
+              {
+                expression: "100px",
+                sourceFile: nestedOverridesFile,
+              },
+            ]),
+          }
+        )
       })
 
       it("should extract $b", () => {
         expect(rendered.vars.global.$b).toMatchSassNumber(nestedOverridesSubFile, {
           value: 100,
           unit: "px",
-          declarations: expect.toMatchDeclarations([{
-            expression: "$a",
-            sourceFile: nestedOverridesSubFile,
-          }]),
+          declarations: expect.toMatchDeclarations([
+            {
+              expression: "$a",
+              sourceFile: nestedOverridesSubFile,
+            },
+          ]),
         })
       })
     })
